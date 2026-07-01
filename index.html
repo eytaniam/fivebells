@@ -1,0 +1,695 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+  <meta charset="UTF-8" />
+  <meta name="viewport" content="width=device-width, initial-scale=1.0" />
+  <title>Body by Science Home Workout</title>
+  <style>
+    :root {
+      --bg: #f7f7f4;
+      --card: #ffffff;
+      --text: #1f2933;
+      --muted: #5f6b76;
+      --accent: #2f6f5e;
+      --accent-2: #e8f2ee;
+      --border: #dde3df;
+      --warn: #fff4d6;
+    }
+
+    * { box-sizing: border-box; }
+
+    body {
+      margin: 0;
+      font-family: -apple-system, BlinkMacSystemFont, "Segoe UI", Roboto, Helvetica, Arial, sans-serif;
+      background: var(--bg);
+      color: var(--text);
+      line-height: 1.45;
+    }
+
+    header {
+      background: linear-gradient(135deg, #23483f, #2f6f5e);
+      color: white;
+      padding: 28px 18px 24px;
+    }
+
+    .wrap {
+      max-width: 920px;
+      margin: 0 auto;
+    }
+
+    h1 {
+      margin: 0 0 8px;
+      font-size: clamp(1.8rem, 5vw, 3rem);
+      letter-spacing: -0.04em;
+    }
+
+    h2 {
+      margin: 0 0 10px;
+      font-size: 1.55rem;
+      letter-spacing: -0.025em;
+    }
+
+    h3 {
+      margin: 18px 0 8px;
+      font-size: 1rem;
+      color: var(--accent);
+      text-transform: uppercase;
+      letter-spacing: 0.08em;
+    }
+
+    p { margin: 0 0 12px; }
+
+    .subhead {
+      max-width: 720px;
+      color: rgba(255,255,255,0.9);
+      font-size: 1.05rem;
+    }
+
+    nav {
+      position: sticky;
+      top: 0;
+      z-index: 10;
+      background: rgba(247, 247, 244, 0.96);
+      backdrop-filter: blur(8px);
+      border-bottom: 1px solid var(--border);
+      padding: 10px 12px;
+      overflow-x: auto;
+      white-space: nowrap;
+    }
+
+    nav a {
+      display: inline-block;
+      text-decoration: none;
+      color: var(--accent);
+      background: var(--accent-2);
+      border: 1px solid #d2e5dd;
+      padding: 9px 12px;
+      border-radius: 999px;
+      margin: 0 5px;
+      font-weight: 650;
+      font-size: 0.92rem;
+    }
+
+    main { padding: 18px; }
+
+    .intro, .exercise {
+      background: var(--card);
+      border: 1px solid var(--border);
+      border-radius: 18px;
+      padding: 18px;
+      margin: 0 auto 18px;
+      box-shadow: 0 8px 22px rgba(31, 41, 51, 0.05);
+    }
+
+    .intro-grid {
+      display: grid;
+      grid-template-columns: repeat(auto-fit, minmax(220px, 1fr));
+      gap: 12px;
+      margin-top: 14px;
+    }
+
+    .mini-card {
+      background: #fbfcfb;
+      border: 1px solid var(--border);
+      border-radius: 14px;
+      padding: 13px;
+    }
+
+    .mini-card strong {
+      display: block;
+      margin-bottom: 5px;
+    }
+
+    .exercise-header {
+      display: flex;
+      justify-content: space-between;
+      gap: 12px;
+      align-items: start;
+      flex-wrap: wrap;
+      margin-bottom: 14px;
+    }
+
+    .badge {
+      background: var(--accent-2);
+      color: var(--accent);
+      border: 1px solid #d2e5dd;
+      padding: 7px 10px;
+      border-radius: 999px;
+      font-size: 0.85rem;
+      font-weight: 700;
+    }
+
+    .video-box {
+      border-radius: 16px;
+      overflow: hidden;
+      border: 1px solid var(--border);
+      background: #111;
+      margin: 12px 0 14px;
+      aspect-ratio: 16 / 9;
+    }
+
+    iframe {
+      width: 100%;
+      height: 100%;
+      border: 0;
+      display: block;
+    }
+
+    .video-helper {
+      color: var(--muted);
+      font-size: 0.94rem;
+      margin: 6px 0 10px;
+    }
+
+    .video-actions {
+      display: flex;
+      flex-wrap: wrap;
+      gap: 10px;
+      margin: 0 0 14px;
+    }
+
+    .action-btn {
+      display: inline-flex;
+      align-items: center;
+      justify-content: center;
+      text-decoration: none;
+      color: white;
+      background: var(--accent);
+      border: 1px solid var(--accent);
+      padding: 10px 14px;
+      border-radius: 999px;
+      font-weight: 800;
+      font-size: 0.95rem;
+    }
+
+    ul {
+      margin: 8px 0 0 20px;
+      padding: 0;
+    }
+
+    li { margin-bottom: 6px; }
+
+    .note {
+      background: var(--warn);
+      border: 1px solid #f1dd9a;
+      border-radius: 14px;
+      padding: 12px;
+      margin: 12px 0;
+    }
+
+    .prescription {
+      display: grid;
+      grid-template-columns: repeat(auto-fit, minmax(180px, 1fr));
+      gap: 10px;
+      margin: 12px 0 14px;
+    }
+
+    .prescription-card {
+      background: #f3f8f5;
+      border: 1px solid #d2e5dd;
+      border-radius: 14px;
+      padding: 12px;
+    }
+
+    .prescription-card strong {
+      display: block;
+      color: var(--accent);
+      font-size: 0.85rem;
+      text-transform: uppercase;
+      letter-spacing: 0.06em;
+      margin-bottom: 4px;
+    }
+
+    .prescription-card span {
+      display: block;
+      font-size: 1.15rem;
+      font-weight: 800;
+    }
+
+    .tracker {
+      margin-top: 14px;
+      border: 1px solid var(--border);
+      border-radius: 14px;
+      overflow: hidden;
+    }
+
+    .tracker-row {
+      display: grid;
+      grid-template-columns: 64px 1.25fr 1fr 1.25fr;
+      border-bottom: 1px solid var(--border);
+      min-height: 48px;
+    }
+
+    .tracker-row:last-child { border-bottom: 0; }
+
+    .tracker-row > div {
+      padding: 10px;
+      border-right: 1px solid var(--border);
+      display: flex;
+      align-items: center;
+      gap: 6px;
+    }
+
+    .tracker-row > div:last-child { border-right: 0; }
+
+    .tracker-head {
+      background: #f3f6f4;
+      font-weight: 750;
+      color: #33423d;
+    }
+
+    input[type="checkbox"] {
+      width: 22px;
+      height: 22px;
+      accent-color: var(--accent);
+    }
+
+    input[type="text"] {
+      width: 100%;
+      border: 1px solid var(--border);
+      border-radius: 10px;
+      padding: 9px;
+      font-size: 1rem;
+    }
+
+    .timer {
+      position: fixed;
+      right: 14px;
+      bottom: 14px;
+      background: #1f2933;
+      color: white;
+      border-radius: 18px;
+      padding: 12px;
+      box-shadow: 0 10px 30px rgba(0,0,0,0.22);
+      max-width: 310px;
+      z-index: 20;
+    }
+
+    .timer-controls {
+      display: flex;
+      gap: 8px;
+      margin-top: 8px;
+    }
+
+    button {
+      cursor: pointer;
+      border: 0;
+      border-radius: 999px;
+      padding: 9px 11px;
+      font-weight: 800;
+      background: var(--accent);
+      color: white;
+    }
+
+    button.secondary {
+      background: #4b5563;
+    }
+
+    #clock {
+      font-size: 1.5rem;
+      font-variant-numeric: tabular-nums;
+      font-weight: 800;
+    }
+
+    footer {
+      color: var(--muted);
+      text-align: center;
+      padding: 20px 18px 90px;
+      font-size: 0.9rem;
+    }
+
+    @media (max-width: 640px) {
+      .tracker-row {
+        grid-template-columns: 58px 1fr;
+      }
+
+      .tracker-head > div:nth-child(3),
+      .tracker-head > div:nth-child(4) {
+        display: none;
+      }
+
+      .timer {
+        left: 12px;
+        right: 12px;
+        bottom: 10px;
+        max-width: none;
+      }
+    }
+
+    @media print {
+      nav, .timer, .video-box { display: none; }
+      body { background: white; }
+      .exercise, .intro { box-shadow: none; page-break-inside: avoid; }
+      footer { padding-bottom: 20px; }
+    }
+  </style>
+</head>
+
+<body>
+  <header>
+    <div class="wrap">
+      <h1>Body by Science Home Workout</h1>
+      <p class="subhead">A simple dumbbell version for home: move slowly, keep tension on the muscle, and stop the set when form breaks.</p>
+    </div>
+  </header>
+
+  <nav aria-label="Workout navigation">
+    <div class="wrap">
+      <a href="#goblet-squat">Squat</a>
+      <a href="#overhead-press">Press</a>
+      <a href="#bent-over-row">Row</a>
+      <a href="#chest-press">Chest</a>
+      <a href="#rdl">RDL</a>
+      <a href="#progression">Progress</a>
+    </div>
+  </nav>
+
+  <main class="wrap">
+    <section class="intro">
+      <h2>How to run the session</h2>
+      <p><strong>Body by Science style:</strong> this is intended as a brief, hard, controlled full-body workout. Use a load that lets Shmee work continuously and safely for roughly 60–90 seconds per exercise.</p>
+
+      <div class="intro-grid">
+        <div class="mini-card"><strong>Tempo</strong>Slow reps. Aim for about 5 seconds up and 5 seconds down. No bouncing or locking out to rest.</div>
+        <div class="mini-card"><strong>Effort</strong>For Shmee’s first few sessions, stop with 1–2 good reps left. Later, stop when she cannot keep clean form.</div>
+        <div class="mini-card"><strong>Rest</strong>Rest 60–120 seconds between exercises, or longer if needed to set up safely.</div>
+        <div class="mini-card"><strong>Frequency</strong>Usually once weekly for the hard version. Add a second lighter strength day later only if running recovery is good.</div>
+      </div>
+
+      <div class="note">
+        <strong>Safety:</strong> warm up gently, avoid sharp pain, and keep the movements controlled. For Shmee’s marathon training, this should support running—not wreck the legs for days. Increase weight only after two workouts in a row above ~90 seconds with solid form and no unusual soreness, pelvic heaviness/pressure, back pain, Achilles pain, or knee complaints.
+      </div>
+
+      <div class="note">
+        <strong>Breathing rule:</strong> breathe in during the easier/lowering phase, then breathe out during the effort phase. She can gently brace before the hard part, but she should not hold her breath through the whole slow rep.
+      </div>
+
+      <p class="video-helper"><strong>Video tip:</strong> each exercise has an inline YouTube player plus an “Open YouTube” button. If inline playback fails on iPhone, use the button below the player.</p>
+    </section>
+
+    <section class="exercise" id="goblet-squat">
+      <div class="exercise-header">
+        <h2>1. Goblet Squat</h2>
+        <span class="badge">Lower body push</span>
+      </div>
+
+      <p class="video-helper">Naomi goblet squat demo.</p>
+      <div class="video-box">
+        <iframe src="https://www.youtube.com/embed/9KzZD_n2r64?rel=0&playsinline=1" title="Goblet squat form video" allow="accelerometer; autoplay; clipboard-write; encrypted-media; gyroscope; picture-in-picture; web-share" allowfullscreen></iframe>
+      </div>
+      <div class="video-actions">
+        <a class="action-btn" href="https://www.youtube.com/watch?v=9KzZD_n2r64" target="_blank" rel="noopener">Open YouTube</a>
+      </div>
+
+      <div class="prescription">
+        <div class="prescription-card"><strong>Suggested start</strong><span>25 lb</span></div>
+        <div class="prescription-card"><strong>Starting range</strong><span>20–30 lb</span></div>
+        <div class="prescription-card"><strong>Target</strong><span>1 set · 60–90 sec · ~6–9 slow reps</span></div>
+      </div>
+
+      <h3>Form and breathing</h3>
+      <ul>
+        <li><strong>Setup:</strong> hold one dumbbell vertically at chest height, elbows tucked slightly down, feet about shoulder-width, toes gently turned out.</li>
+        <li><strong>Lower:</strong> breathe in as she slowly sits between her heels. Keep chest proud, ribs stacked over hips, and knees tracking in the same direction as toes.</li>
+        <li><strong>Push:</strong> breathe out as she pushes the floor away and stands up. Think “drive through mid-foot and heel,” not “tip forward onto toes.”</li>
+        <li><strong>Top:</strong> stop just short of relaxing. Stand tall, squeeze glutes lightly, then start the next slow descent without resting.</li>
+        <li><strong>Watch for:</strong> knees collapsing inward, heels lifting, rounding the lower back, or turning this into fast reps.</li>
+      </ul>
+
+      <h3>Body by Science cue</h3>
+      <p>Keep continuous tension. The set should feel like one long controlled effort, not separate reps with rests at the top.</p>
+
+      <div class="tracker">
+        <div class="tracker-row tracker-head"><div>Done</div><div>Target</div><div>Actual weight used</div><div>Time / reps / notes</div></div>
+        <div class="tracker-row">
+          <div><input type="checkbox"></div>
+          <div>1 hard set · 60–90 sec</div>
+          <div><input type="text" placeholder="e.g. 25 lb"></div>
+          <div><input type="text" placeholder="e.g. 75 sec, 7 reps"></div>
+        </div>
+      </div>
+    </section>
+
+    <section class="exercise" id="overhead-press">
+      <div class="exercise-header">
+        <h2>2. Dumbbell Overhead Press</h2>
+        <span class="badge">Upper body push</span>
+      </div>
+
+      <p class="video-helper">Heather Robertson overhead press demo.</p>
+      <div class="video-box">
+        <iframe src="https://www.youtube.com/embed/aedn4SSc3Ww?rel=0&playsinline=1" title="Overhead press form video" allow="accelerometer; autoplay; clipboard-write; encrypted-media; gyroscope; picture-in-picture; web-share" allowfullscreen></iframe>
+      </div>
+      <div class="video-actions">
+        <a class="action-btn" href="https://www.youtube.com/shorts/aedn4SSc3Ww" target="_blank" rel="noopener">Open YouTube</a>
+      </div>
+
+      <div class="prescription">
+        <div class="prescription-card"><strong>Suggested start</strong><span>10 lb each</span></div>
+        <div class="prescription-card"><strong>Starting range</strong><span>8–12 lb each</span></div>
+        <div class="prescription-card"><strong>Target</strong><span>1 set · 60–90 sec · ~6–9 slow reps</span></div>
+      </div>
+
+      <h3>Form and breathing</h3>
+      <ul>
+        <li><strong>Setup:</strong> stand tall or sit on a sturdy chair. Start dumbbells near shoulder height, palms facing forward or slightly inward.</li>
+        <li><strong>Brace:</strong> glutes lightly on, ribs down, belly gently braced. Do not lean back to turn it into an incline press.</li>
+        <li><strong>Push:</strong> breathe out as she presses the dumbbells overhead. Move slowly and keep wrists stacked over elbows.</li>
+        <li><strong>Lower:</strong> breathe in as she lowers the dumbbells back toward shoulder height under control.</li>
+        <li><strong>Watch for:</strong> arching the lower back, shrugging into the ears, flaring ribs, or locking out and resting at the top.</li>
+      </ul>
+
+      <h3>Body by Science cue</h3>
+      <p>Keep the shoulders working the whole time. Smooth reps beat heavy sloppy reps, especially on this lift.</p>
+
+      <div class="tracker">
+        <div class="tracker-row tracker-head"><div>Done</div><div>Target</div><div>Actual weight used</div><div>Time / reps / notes</div></div>
+        <div class="tracker-row">
+          <div><input type="checkbox"></div>
+          <div>1 hard set · 60–90 sec</div>
+          <div><input type="text" placeholder="e.g. 10 lb each"></div>
+          <div><input type="text" placeholder="e.g. 70 sec, 7 reps"></div>
+        </div>
+      </div>
+    </section>
+
+    <section class="exercise" id="bent-over-row">
+      <div class="exercise-header">
+        <h2>3. Dumbbell Bent-Over Row</h2>
+        <span class="badge">Upper body pull</span>
+      </div>
+
+      <p class="video-helper">Colossus Fit bent-over row demo.</p>
+      <div class="video-box">
+        <iframe src="https://www.youtube.com/embed/c-gt-zzoa_A?rel=0&playsinline=1" title="Bent-over row form video by Colossus Fit" allow="accelerometer; autoplay; clipboard-write; encrypted-media; gyroscope; picture-in-picture; web-share" allowfullscreen></iframe>
+      </div>
+      <div class="video-actions">
+        <a class="action-btn" href="https://www.youtube.com/watch?v=c-gt-zzoa_A" target="_blank" rel="noopener">Open YouTube</a>
+      </div>
+
+      <div class="prescription">
+        <div class="prescription-card"><strong>Suggested start</strong><span>15 lb each</span></div>
+        <div class="prescription-card"><strong>Starting range</strong><span>12–20 lb each</span></div>
+        <div class="prescription-card"><strong>Target</strong><span>1 set · 60–90 sec · ~6–9 slow reps</span></div>
+      </div>
+
+      <h3>Form and breathing</h3>
+      <ul>
+        <li><strong>Setup:</strong> hinge at the hips with soft knees, long spine, and chest angled toward the floor. Dumbbells hang under shoulders.</li>
+        <li><strong>Pull:</strong> breathe out as she rows the dumbbells toward her lower ribs/hips. Lead with elbows, not hands.</li>
+        <li><strong>Lower:</strong> breathe in as she lowers the dumbbells slowly until arms are long again without letting shoulders dump forward.</li>
+        <li><strong>Back position:</strong> keep neck neutral, shoulder blades moving smoothly, and torso still.</li>
+        <li><strong>Watch for:</strong> yanking with momentum, rounding the back, shrugging, or standing up during the rep.</li>
+      </ul>
+
+      <h3>Body by Science cue</h3>
+      <p>The torso stays quiet. If she needs body English or momentum, the set is over.</p>
+
+      <div class="tracker">
+        <div class="tracker-row tracker-head"><div>Done</div><div>Target</div><div>Actual weight used</div><div>Time / reps / notes</div></div>
+        <div class="tracker-row">
+          <div><input type="checkbox"></div>
+          <div>1 hard set · 60–90 sec</div>
+          <div><input type="text" placeholder="e.g. 15 lb each"></div>
+          <div><input type="text" placeholder="e.g. 75 sec, 7 reps"></div>
+        </div>
+      </div>
+    </section>
+
+    <section class="exercise" id="chest-press">
+      <div class="exercise-header">
+        <h2>4. Dumbbell Floor Press</h2>
+        <span class="badge">Chest press, no bench</span>
+      </div>
+
+      <div class="note"><strong>No bench adaptation:</strong> use a dumbbell floor press instead of a dumbbell bench press. The floor limits depth and is usually safer at home.</div>
+
+      <p class="video-helper">Colossus Fit dumbbell floor press demo.</p>
+      <div class="video-box">
+        <iframe src="https://www.youtube.com/embed/Bx4QPVH-J1g?rel=0&playsinline=1" title="Dumbbell floor press form video by Colossus Fit" allow="accelerometer; autoplay; clipboard-write; encrypted-media; gyroscope; picture-in-picture; web-share" allowfullscreen></iframe>
+      </div>
+      <div class="video-actions">
+        <a class="action-btn" href="https://www.youtube.com/watch?v=Bx4QPVH-J1g" target="_blank" rel="noopener">Open YouTube</a>
+      </div>
+
+      <div class="prescription">
+        <div class="prescription-card"><strong>Suggested start</strong><span>15 lb each</span></div>
+        <div class="prescription-card"><strong>Starting range</strong><span>12–20 lb each</span></div>
+        <div class="prescription-card"><strong>Target</strong><span>1 set · 60–90 sec · ~6–9 slow reps</span></div>
+      </div>
+
+      <h3>Form and breathing</h3>
+      <ul>
+        <li><strong>Setup:</strong> lie on the floor with knees bent and feet planted. Start with dumbbells over chest, wrists straight, elbows about 30–45° from the body.</li>
+        <li><strong>Lower:</strong> breathe in as she lowers slowly until upper arms lightly meet the floor. Do not bounce the elbows.</li>
+        <li><strong>Push:</strong> breathe out as she presses the dumbbells up. Think “push away from the floor” while keeping shoulder blades gently set.</li>
+        <li><strong>Top:</strong> stop just short of hard elbow lockout so the chest, shoulders, and triceps stay under tension.</li>
+        <li><strong>Watch for:</strong> wrists bending back, elbows flaring straight out, shrugging shoulders, or bouncing off the floor.</li>
+      </ul>
+
+      <h3>Body by Science cue</h3>
+      <p>Keep tension across chest, shoulders, and triceps. The floor is a safety stop, not a trampoline.</p>
+
+      <div class="tracker">
+        <div class="tracker-row tracker-head"><div>Done</div><div>Target</div><div>Actual weight used</div><div>Time / reps / notes</div></div>
+        <div class="tracker-row">
+          <div><input type="checkbox"></div>
+          <div>1 hard set · 60–90 sec</div>
+          <div><input type="text" placeholder="e.g. 15 lb each"></div>
+          <div><input type="text" placeholder="e.g. 80 sec, 8 reps"></div>
+        </div>
+      </div>
+    </section>
+
+    <section class="exercise" id="rdl">
+      <div class="exercise-header">
+        <h2>5. Dumbbell Romanian Deadlift</h2>
+        <span class="badge">Hip hinge</span>
+      </div>
+
+      <p class="video-helper">NASM dumbbell Romanian deadlift demo.</p>
+      <div class="video-box">
+        <iframe src="https://www.youtube.com/embed/aa57T45iFSE?rel=0&playsinline=1" title="Dumbbell Romanian deadlift form video by NASM" allow="accelerometer; autoplay; clipboard-write; encrypted-media; gyroscope; picture-in-picture; web-share" allowfullscreen></iframe>
+      </div>
+      <div class="video-actions">
+        <a class="action-btn" href="https://www.youtube.com/watch?v=aa57T45iFSE" target="_blank" rel="noopener">Open YouTube</a>
+      </div>
+
+      <div class="prescription">
+        <div class="prescription-card"><strong>Suggested start</strong><span>20 lb each</span></div>
+        <div class="prescription-card"><strong>Starting range</strong><span>15–25 lb each</span></div>
+        <div class="prescription-card"><strong>Target</strong><span>1 set · 60–90 sec · ~6–9 slow reps</span></div>
+      </div>
+
+      <h3>Form and breathing</h3>
+      <ul>
+        <li><strong>Setup:</strong> hold two dumbbells in front of thighs, feet hip-width, knees soft, shoulders relaxed.</li>
+        <li><strong>Lower:</strong> breathe in as she sends hips back and lets the dumbbells slide down close to the legs. Spine stays long and ribs stay down.</li>
+        <li><strong>Depth:</strong> stop when hamstrings are loaded or when the back wants to round. She does not need to reach the floor.</li>
+        <li><strong>Stand:</strong> breathe out as she drives hips forward and returns to tall standing. Think “glutes forward,” not “pull with the low back.”</li>
+        <li><strong>Watch for:</strong> squatting too much, dumbbells drifting away from legs, rounding the back, or locking knees hard.</li>
+      </ul>
+
+      <h3>Body by Science cue</h3>
+      <p>This is not a squat. Make it a slow hip hinge and keep the dumbbells close to the legs the whole time.</p>
+
+      <div class="tracker">
+        <div class="tracker-row tracker-head"><div>Done</div><div>Target</div><div>Actual weight used</div><div>Time / reps / notes</div></div>
+        <div class="tracker-row">
+          <div><input type="checkbox"></div>
+          <div>1 hard set · 60–90 sec</div>
+          <div><input type="text" placeholder="e.g. 20 lb each"></div>
+          <div><input type="text" placeholder="e.g. 75 sec, 7 reps"></div>
+        </div>
+      </div>
+    </section>
+
+    <section class="intro" id="progression">
+      <h2>When to change the weight</h2>
+
+      <div class="intro-grid">
+        <div class="mini-card"><strong>Under 45–60 sec</strong>Too heavy for now, or tempo/form is breaking. Keep the same weight or go lighter.</div>
+        <div class="mini-card"><strong>60–90 sec</strong>Perfect working zone. Keep the weight and try to make the set smoother next time.</div>
+        <div class="mini-card"><strong>Over 90 sec twice</strong>Move up next session if recovery is good and there are no pain or postpartum pressure symptoms.</div>
+        <div class="mini-card"><strong>Over 120 sec</strong>Definitely increase weight next time.</div>
+      </div>
+
+      <div class="note">
+        <strong>Multiple sets:</strong> keep this as one work set per exercise. Add only light practice reps before the work set if she is learning the movement or misjudged the first weight.
+      </div>
+    </section>
+  </main>
+
+  <aside class="timer" aria-label="Workout timer">
+    <div><strong>Set timer</strong></div>
+    <div id="clock">02:00</div>
+    <div class="timer-controls">
+      <button onclick="startTimer(120)">2:00</button>
+      <button onclick="startTimer(90)">1:30</button>
+      <button class="secondary" onclick="resetTimer()">Reset</button>
+    </div>
+  </aside>
+
+  <footer>
+    Built for a dumbbell-only, no-bench home version of the Body by Science big-five style workout.
+  </footer>
+
+  <script>
+    let remaining = 120;
+    let timer = null;
+    const clock = document.getElementById('clock');
+
+    function renderClock() {
+      const m = Math.floor(remaining / 60).toString().padStart(2, '0');
+      const s = (remaining % 60).toString().padStart(2, '0');
+      clock.textContent = `${m}:${s}`;
+    }
+
+    function startTimer(seconds) {
+      clearInterval(timer);
+      remaining = seconds;
+      renderClock();
+
+      timer = setInterval(() => {
+        remaining -= 1;
+        renderClock();
+
+        if (remaining <= 0) {
+          clearInterval(timer);
+          timer = null;
+
+          if ('vibrate' in navigator) {
+            navigator.vibrate([200, 100, 200]);
+          }
+        }
+      }, 1000);
+    }
+
+    function resetTimer() {
+      clearInterval(timer);
+      timer = null;
+      remaining = 120;
+      renderClock();
+    }
+
+    // Save workout entries on this device so Shmee can come back to them later.
+    document.querySelectorAll('.tracker input').forEach((input, index) => {
+      const key = `bbs-home-workout-${index}`;
+
+      if (input.type === 'checkbox') {
+        input.checked = localStorage.getItem(key) === 'true';
+        input.addEventListener('change', () => {
+          localStorage.setItem(key, input.checked);
+        });
+      } else {
+        input.value = localStorage.getItem(key) || '';
+        input.addEventListener('input', () => {
+          localStorage.setItem(key, input.value);
+        });
+      }
+    });
+
+    renderClock();
+  </script>
+</body>
+</html>
